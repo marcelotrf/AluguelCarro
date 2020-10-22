@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>index</title>
+        <title>Compro fusca sem roda</title>
     </head>
     <body>
-        <h1>Menu</h1>
+        <h1>Produtos</h1>
     </body>
 </html>
