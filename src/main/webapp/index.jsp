@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Produtos</h1>
+        <a href="listaCarros.jsp">Listar Carros</a><br/>
     </body>
 </html>
