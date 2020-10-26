@@ -36,31 +36,41 @@ public class CarroDAO
                 while(rs.next())
                 {
                     // atributos do banco
+                    int id = rs.getInt("id");
                     String marca = rs.getString("nome");
-                    String tipo = rs.getString("marca"); 
+                    String placa = rs.getString("placa");
+                    double preco = rs.getDouble("preco");
                 // criar atributos no banco    Long cpf = rs.getLong("cpf");
-                    listaCarros.add(new Carro(marca,tipo));
+                    listaCarros.add(new Carro(id,marca,placa,preco));
                 }                    
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Listar.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Listar.class.getName()).log(Level.SEVERE, null, ex);
             }
          return listaCarros;
         
     }
     
-    public static void addCarro(Carro carro) throws ClassNotFoundException, SQLException
+    public static Carro addCarro(Carro carro) throws ClassNotFoundException, SQLException
     {
         Connection con = ConexaoBD.getConexao();
         String query = "insert into cliente(nome,marca) values (?,?,?)";
-        PreparedStatement ps = con.prepareStatement(query);
-        ps.setString(1, carro.getMarca());
-        ps.setString(2, carro.getTipo());
-      // adicionar depois  ps.setLong(3, cliente.getCpf());
+        return null;
         
-        ps.execute();
-        
+    }
+    public static Carro buscaCarroId(int id) throws ClassNotFoundException, SQLException{
+        Connection con = ConexaoBD.getConexao();
+        String query = "select * from carro where id=?";
+        return null;
+    }
+    public static Carro alteraCarro(Carro carro) throws ClassNotFoundException, SQLException{
+        Connection con = ConexaoBD.getConexao();
+        String query = "UPDATE carro SET marca = ?, placa = ?, preco = ? WHERE id = ?;";
+        return null;
+    }
+    public static Carro deletaCarro(Carro carro) throws ClassNotFoundException, SQLException{
+        Connection con = ConexaoBD.getConexao();
+        String query = "DELETE FROM carro WHERE id = ?;";
+        return null;
     }
     
 }
