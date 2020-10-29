@@ -1,30 +1,29 @@
 <%-- 
-    Document   : listaClientes
-    Created on : 26/10/2020, 17:55:03
-    Author     : biancagolin
+    Document   : listaCarro
+    Created on : 29/10/2020, 02:04:26
+    Author     : vickp
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%@include file="header.jsp"%>
+     <%@include file="header.jsp"%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lista de Clientes</title>
-        
-        <script lang="text/javascript">
-            function mostrarModalExclusao(cpf, nome){
-                console.log("mostrarModalExclusao", cpf);
-                $("#nomeCliente").html(nome);
-                $('#cpfCliente').val(cpf);
+        <title>Lista De Carros</title>
+    </head>
+    <script lang="text/javascript">
+            function mostrarModalExclusao(placa, marca){
+                console.log("mostrarModalExclusao", placa);
+                $("#marcaCarro").html(marca);
+                $('#placaCarro').val(placa);
                 $('#modalExclusao').modal('show');
             }
             
-            function excluirCliente() {
-                var cpf = $('#cpfCliente').val();
-                console.log("Deletar cliente", cpf);
-                $.get("ExcluirCliente?cpf="+cpf, function(resposta) {
+            function excluirCarro() {
+                var placa = $('#placaCarro').val();
+                console.log("Deletar carro", placa);
+                $.get("ExcluirCarro?placa="+placa, function(resposta) {
                     $('#modalExclusao').modal('hide');
                     if (resposta === true) {
                         console.log("Funcionou");
@@ -35,26 +34,24 @@
                 });
             }
         </script>
-                
-    </head>
     <body class="container">
-        <h1>Lista de Clientes</h1>
+        <h1>Lista De Carros</h1>
         <table class="table">
             <thead>
-                <th>Nome</th>
-                <th>CNH</th>
-                <th>CPF</th>
-                <th>Idade</th>
+                <th>Marca</th>
+                <th>Portas</th>
+                <th>Placa</th>
+                <th>Preco</th>
             </thead>  
             <tbody>
-                <c:forEach var="cliente" items="${listaClientes}">
+                <c:forEach var="carro" items="${listaCarro}">
                     <tr>
-                        <td>${cliente.nome}</td>
-                        <td>${cliente.cnh}</td>
-                        <td>${cliente.cpf}</td>
-                        <td>${cliente.idade}</td>
-                        <td><a href="AlterarCliente?cpf=${cliente.cpf}">Alterar</a></td>
-                        <td><button type="button" class="btn btn-primary" onclick="mostrarModalExclusao('${cliente.cpf}', '${cliente.nome}')">Excluir</button></td>
+                        <td>${carro.marca}</td>
+                        <td>${carro.qntPortas}</td>
+                        <td>${carro.placa}</td>
+                        <td>${carro.preco}</td>
+                        <td><a href="AlterarCarro?placa=${carro.placa}">Alterar</a></td>
+                        <td><button type="button" class="btn btn-primary" onclick="mostrarModalExclusao('${carro.placa}', '${carro.marca}')">Excluir</button></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -69,12 +66,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Tem certeza que deseja excluir cliente <label id="nomeCliente"/></label>?
-                    <input id="cpfCliente" hidden="true"/>                   
+                        Tem certeza que deseja excluir este carro <label id="marcaCarro"/></label>?
+                    <input id="placaCarro" hidden="true"/>                   
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="excluirCliente()">Sim</button>
+                        <button type="button" class="btn btn-primary" onclick="excluirCarro()">Sim</button>
                     </div>
                 </div>
             </div>

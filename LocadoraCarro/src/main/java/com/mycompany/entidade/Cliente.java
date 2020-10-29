@@ -5,16 +5,12 @@
  */
 package com.mycompany.entidade;
 
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
  * @author biancagolin
  */
 
-@Setter
-@Getter
 public class Cliente {
     private String nome;
     private String cnh;
@@ -25,6 +21,41 @@ public class Cliente {
         this.nome = nome;
         this.cnh = cnh;
         this.cpf = cpf;
+        this.idade = idade;
+    }
+
+    public Cliente() {
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCnh() {
+        return cnh;
+    }
+
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 

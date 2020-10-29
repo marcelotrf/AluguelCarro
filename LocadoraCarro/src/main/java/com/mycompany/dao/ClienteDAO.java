@@ -7,7 +7,6 @@ package com.mycompany.dao;
 
 import com.mycompany.bd.ConexaoBD;
 import com.mycompany.entidade.Cliente;
-import com.mycompany.servlet.ServletBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,15 +38,13 @@ public class ClienteDAO {
                 listaCliente.add(new Cliente(nome, cnh, cpf, idade));
 
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletBD.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServletBD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return listaCliente;
     }
-    
+
     public static void addCliente(Cliente cliente) throws SQLException, ClassNotFoundException {
         Connection con = ConexaoBD.getConexao();
         String query = "insert into cliente(nome, cnh, cpf, idade) values (?,?,?,?)";
@@ -57,9 +54,9 @@ public class ClienteDAO {
         ps.setString(3, cliente.getCpf());
         ps.setInt(4, cliente.getIdade());
         ps.execute();
-        
+
     }
-    
+
     public static Cliente getCliente(String cpf) {
         Cliente cliente = null;
         try {
@@ -76,26 +73,24 @@ public class ClienteDAO {
                 cliente = new Cliente(nome, cnh, cpf, idade);
 
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletBD.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ServletBD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return cliente;
     }
-    
-        public static void updateCliente(Cliente cliente) throws SQLException, ClassNotFoundException {
-            Connection con = ConexaoBD.getConexao();
-            String query = ("update cliente set nome= ?, cnh= ?, idade= ? where cpf= ?");
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, cliente.getNome());
-            ps.setString(2, cliente.getCnh());
-            ps.setInt(3, cliente.getIdade());
-            ps.setString(4, cliente.getCpf());
-            ps.execute();
-        }
-        
+
+    public static void updateCliente(Cliente cliente) throws SQLException, ClassNotFoundException {
+        Connection con = ConexaoBD.getConexao();
+        String query = ("update cliente set nome= ?, cnh= ?, idade= ? where cpf= ?");
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, cliente.getNome());
+        ps.setString(2, cliente.getCnh());
+        ps.setInt(3, cliente.getIdade());
+        ps.setString(4, cliente.getCpf());
+        ps.execute();
+    }
+
     public static void deleteCliente(String cpf) throws SQLException, ClassNotFoundException {
         Connection con = ConexaoBD.getConexao();
         String query = ("delete from cliente where cpf= ?");

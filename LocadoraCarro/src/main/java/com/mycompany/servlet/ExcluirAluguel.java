@@ -5,10 +5,8 @@
  */
 package com.mycompany.servlet;
 
-import com.mycompany.dao.ClienteDAO;
-import com.mycompany.utils.Utils;
+import com.mycompany.dao.AluguelDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,22 +18,22 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author biancagolin
+ * @author vickp
  */
-@WebServlet(name = "ExcluirCliente", urlPatterns = {"/ExcluirCliente"})
-public class ExcluirCliente extends HttpServlet {
+@WebServlet(name = "ExcluirAluguel", urlPatterns = {"/ExcluirAluguel"})
 
+public class ExcluirAluguel extends HttpServlet{
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cpf = request.getParameter("cpf");
+        String id = request.getParameter("id");
         try {
-            ClienteDAO.deleteCliente(cpf);
+            AluguelDAO.deleteAluguel(id);
             response.getWriter().print(true);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(ExcluirCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExcluirAluguel.class.getName()).log(Level.SEVERE, null, ex);
             response.getWriter().print(false);
         }
     }
-
 }

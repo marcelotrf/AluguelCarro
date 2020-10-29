@@ -5,11 +5,10 @@
  */
 package com.mycompany.servlet;
 
-import com.mycompany.dao.ClienteDAO;
-import com.mycompany.entidade.Cliente;
+import com.mycompany.dao.CarroDAO;
+import com.mycompany.entidade.Carro;
 import com.mycompany.utils.Utils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,20 +21,19 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author biancagolin
+ * @author vickp
  */
-@WebServlet(name = "AlterarCliente", urlPatterns = {"/AlterarCliente"})
-
-public class AlterarCliente extends HttpServlet {
-
+@WebServlet(name = "AlterarCarro", urlPatterns = {"/AlterarCarro"})
+public class AlterarCarro extends HttpServlet{
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cpf = request.getParameter("cpf");
-        Cliente cliente = ClienteDAO.getCliente(cpf);
-        request.setAttribute("cliente", cliente);
+        String placa = request.getParameter("placa");
+        Carro carro = CarroDAO.getCarro(placa);
+        request.setAttribute("carro", carro);
 
-        RequestDispatcher requestDispacher = getServletContext().getRequestDispatcher("/alterarCliente.jsp");
+        RequestDispatcher requestDispacher = getServletContext().getRequestDispatcher("/alterarCarro.jsp");
         requestDispacher.forward(request, response);
         
     }
@@ -44,25 +42,25 @@ public class AlterarCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String nome = request.getParameter("nome");
-        String cnh = request.getParameter("cnh");
-        String cpf = request.getParameter("cpf");
-        String idadeStr = request.getParameter("idade");
-        int idade = Integer.parseInt(idadeStr);
-        Cliente cliente = ClienteDAO.getCliente(cpf);
-        cliente.setNome(nome);
-        cliente.setCnh(cnh);
-        cliente.setCpf(cpf);
-        cliente.setIdade(idade);
+        String marca = request.getParameter("marca");
+        String qntPortasStr = request.getParameter("qntPortas");
+        String placa = request.getParameter("placa");
+        String precoStr = request.getParameter("preco");
+        int qntPortas = Integer.parseInt(qntPortasStr);
+        double preco = Double.parseDouble(precoStr);
+        Carro carro = CarroDAO.getCarro(placa);
+        carro.setMarca(marca);
+        carro.setQntPortas(qntPortas);
+        carro.setPlaca(placa);
+        carro.setPreco(preco);
         
         try {
-            ClienteDAO.updateCliente(cliente);
+            CarroDAO.updateCarro(carro);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(AlterarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AlterarCarro.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaDeErro(ex, request, response);
         }
     }
-
 
 }

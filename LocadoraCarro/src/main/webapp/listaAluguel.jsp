@@ -1,30 +1,29 @@
-<%-- 
-    Document   : listaClientes
-    Created on : 26/10/2020, 17:55:03
-    Author     : biancagolin
+    <%-- 
+    Document   : listaAluguel
+    Created on : 29/10/2020, 02:22:13
+    Author     : vickp
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%@include file="header.jsp"%>
+     <%@include file="header.jsp"%>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lista de Clientes</title>
-        
-        <script lang="text/javascript">
-            function mostrarModalExclusao(cpf, nome){
-                console.log("mostrarModalExclusao", cpf);
-                $("#nomeCliente").html(nome);
-                $('#cpfCliente').val(cpf);
+        <title>Lista De Alugueis</title>
+    </head>
+    <script lang="text/javascript">
+            function mostrarModalExclusao(id, preco){
+                console.log("mostrarModalExclusao", id);
+                $("#precoAluguel").html(preco);
+                $('#idAluguel').val(id);
                 $('#modalExclusao').modal('show');
             }
             
-            function excluirCliente() {
-                var cpf = $('#cpfCliente').val();
-                console.log("Deletar cliente", cpf);
-                $.get("ExcluirCliente?cpf="+cpf, function(resposta) {
+            function excluirAluguel() {
+                var id = $('#idAluguel').val();
+                console.log("Deletar aluguel", id);
+                $.get("ExcluirAluguel?id="+id, function(resposta) {
                     $('#modalExclusao').modal('hide');
                     if (resposta === true) {
                         console.log("Funcionou");
@@ -35,26 +34,28 @@
                 });
             }
         </script>
-                
-    </head>
-    <body class="container">
-        <h1>Lista de Clientes</h1>
+     <body class="container">
+        <h1>Lista De Alugueis</h1>
         <table class="table">
             <thead>
-                <th>Nome</th>
-                <th>CNH</th>
-                <th>CPF</th>
-                <th>Idade</th>
+                <th>Id</th>
+                <th>Preco</th>
+                <th>Data de locacao</th>
+                <th>Prazo de devolucao</th>
+                <th>Data de devolucao</th>
+                <th>Juros</th>
             </thead>  
             <tbody>
-                <c:forEach var="cliente" items="${listaClientes}">
+                <c:forEach var="aluguel" items="${listaAluguel}">
                     <tr>
-                        <td>${cliente.nome}</td>
-                        <td>${cliente.cnh}</td>
-                        <td>${cliente.cpf}</td>
-                        <td>${cliente.idade}</td>
-                        <td><a href="AlterarCliente?cpf=${cliente.cpf}">Alterar</a></td>
-                        <td><button type="button" class="btn btn-primary" onclick="mostrarModalExclusao('${cliente.cpf}', '${cliente.nome}')">Excluir</button></td>
+                        <td>${aluguel.id}</td>
+                        <td>${aluguel.preco}</td>
+                        <td>${aluguel.dataLocacao}</td>
+                        <td>${aluguel.prazoDevolucao}</td>
+                        <td>${aluguel.dataDevolucao}</td>
+                        <td>${aluguel.juros}</td>
+                        <td><a href="AlterarAluguel?id=${aluguel.id}">Alterar</a></td>
+                        <td><button type="button" class="btn btn-primary" onclick="mostrarModalExclusao('${aluguel.id}', '${aluguel.preco}')">Excluir</button></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -69,12 +70,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Tem certeza que deseja excluir cliente <label id="nomeCliente"/></label>?
-                    <input id="cpfCliente" hidden="true"/>                   
+                        Tem certeza que deseja excluir este registro de aluguel <label id="id"/></label>?
+                    <input id="idAluguel" hidden="true"/>                   
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="excluirCliente()">Sim</button>
+                        <button type="button" class="btn btn-primary" onclick="excluirAluguel()">Sim</button>
                     </div>
                 </div>
             </div>

@@ -5,15 +5,13 @@
  */
 package com.mycompany.servlet;
 
-import com.mycompany.dao.ClienteDAO;
-import com.mycompany.entidade.Cliente;
+import com.mycompany.dao.AluguelDAO;
+import com.mycompany.entidade.Aluguel;
 import com.mycompany.utils.Utils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,28 +20,30 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author biancagolin
+ * @author vickp
  */
-@WebServlet(name = "CadastrarCliente", urlPatterns = {"/CadastrarCliente"})
-public class CadastrarCliente extends HttpServlet {
+@WebServlet(name = "CadastrarAluguel", urlPatterns = {"/CadastrarAluguel"})
+public class CadastrarAluguel extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nome = request.getParameter("nome");
-        String cnh = request.getParameter("cnh");
-        String cpf = request.getParameter("cpf");
-        String idadeStr = request.getParameter("idade");
-        int idade = Integer.parseInt(idadeStr);
-        
-        Cliente cliente = new Cliente(nome, cnh, cpf, idade);
+        String id = request.getParameter("id");
+        String precoStr = request.getParameter("preco");
+        String dataLocacao = request.getParameter("dataLocacao");
+        String prazoDevolucao = request.getParameter("prazoDevolucao");
+        String dataDevolucao = request.getParameter("dataDevolucao");
+        String jurosStr = request.getParameter("juros");
+        double preco = Double.parseDouble(precoStr);
+        double juros = Double.parseDouble(jurosStr);
+
+        Aluguel aluguel = new Aluguel(id, preco, dataLocacao, prazoDevolucao, dataDevolucao, juros);
         try {
-            ClienteDAO.addCliente(cliente);
+            AluguelDAO.addAluguel(aluguel);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(CadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarAluguel.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaDeErro(ex, request, response);
         }
     }
-
 }

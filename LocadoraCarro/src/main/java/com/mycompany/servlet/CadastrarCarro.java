@@ -5,15 +5,13 @@
  */
 package com.mycompany.servlet;
 
-import com.mycompany.dao.ClienteDAO;
-import com.mycompany.entidade.Cliente;
+import com.mycompany.dao.CarroDAO;
+import com.mycompany.entidade.Carro;
 import com.mycompany.utils.Utils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,28 +20,27 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author biancagolin
+ * @author vickp
  */
-@WebServlet(name = "CadastrarCliente", urlPatterns = {"/CadastrarCliente"})
-public class CadastrarCliente extends HttpServlet {
-
-    @Override
+@WebServlet(name = "CadastrarCarro", urlPatterns = {"/CadastrarCarro"})
+public class CadastrarCarro extends HttpServlet{
+      @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nome = request.getParameter("nome");
-        String cnh = request.getParameter("cnh");
-        String cpf = request.getParameter("cpf");
-        String idadeStr = request.getParameter("idade");
-        int idade = Integer.parseInt(idadeStr);
+        String marca = request.getParameter("marca");
+        String qntPortasStr = request.getParameter("qntPortas");
+        String placa = request.getParameter("placa");
+        String precoStr = request.getParameter("preco");
+        int qntPortas = Integer.parseInt(qntPortasStr);
+        double preco = Double.parseDouble(precoStr);
         
-        Cliente cliente = new Cliente(nome, cnh, cpf, idade);
+        Carro carro = new Carro(marca, qntPortas, placa, preco);
         try {
-            ClienteDAO.addCliente(cliente);
+            CarroDAO.addCarro(carro);
             response.sendRedirect("sucesso.jsp");
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(CadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastrarCarro.class.getName()).log(Level.SEVERE, null, ex);
             Utils.mostrarTelaDeErro(ex, request, response);
         }
     }
-
 }

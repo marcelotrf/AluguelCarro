@@ -5,8 +5,8 @@
  */
 package com.mycompany.servlet;
 
-import com.mycompany.dao.ClienteDAO;
-import com.mycompany.entidade.Cliente;
+import com.mycompany.dao.AluguelDAO;
+import com.mycompany.entidade.Aluguel;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -18,21 +18,27 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author biancagolin
+ * @author vickp
  */
-@WebServlet(name = "ListarClientes", urlPatterns = {"/ListarClientes"})
-public class ListarClientes extends HttpServlet {
+@WebServlet(name = "ListarAluguel", urlPatterns = {"/ListarAluguel"})
+public class ListarAluguel extends HttpServlet{
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Cliente> listaClientes = ClienteDAO.getClientes();
-        request.setAttribute("listaClientes", listaClientes);
+        List<Aluguel> listaAluguel= AluguelDAO.getAluguel();
+        request.setAttribute("listaAluguel", listaAluguel);
         
         RequestDispatcher requestDispacher = getServletContext()
-                .getRequestDispatcher("/listaClientes.jsp");
+                .getRequestDispatcher("/listaAluguel.jsp");
         requestDispacher.forward(request, response);
     }
-
 }
