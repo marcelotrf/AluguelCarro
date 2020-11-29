@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Listar</servlet-name>
-        <servlet-class>Servelet.Listar</servlet-class>
+        <servlet-name>ListarCliente</servlet-name>
+        <servlet-class>com.mycompany.servlet.ListarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarCarro</servlet-name>
+        <servlet-class>com.mycompany.servlet.ListarCarro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarAluguel</servlet-name>
+        <servlet-class>com.mycompany.servlet.ListarAluguel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarCliente</servlet-name>
+        <servlet-class>com.mycompany.servlet.CadastrarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarCarro</servlet-name>
+        <servlet-class>com.mycompany.servlet.CadastrarCarro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarAluguel</servlet-name>
+        <servlet-class>com.mycompany.servlet.CadastrarAluguel</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Listar</servlet-name>
-        <url-pattern>/Listar</url-pattern>
+        <servlet-name>ListarCliente</servlet-name>
+        <url-pattern>/ListarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarCarro</servlet-name>
+        <url-pattern>/ListarCarro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarAluguel</servlet-name>
+        <url-pattern>/ListarAluguel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarCliente</servlet-name>
+        <url-pattern>/CadastrarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarCarro</servlet-name>
+        <url-pattern>/CadastrarCarro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarAluguel</servlet-name>
+        <url-pattern>/CadastrarAluguel</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
