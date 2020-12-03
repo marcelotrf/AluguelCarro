@@ -8,6 +8,7 @@ package com.mycompany.servlet;
 import com.mycompany.dao.ClienteDAO;
 import com.mycompany.entidade.Cliente;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

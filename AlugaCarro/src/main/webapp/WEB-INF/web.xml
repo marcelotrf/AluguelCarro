@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>ListarCliente</servlet-name>
+        <servlet-name>ListarClientes</servlet-name>
         <servlet-class>com.mycompany.servlet.ListarCliente</servlet-class>
     </servlet>
     <servlet>
@@ -97,16 +97,16 @@
         <servlet-class>com.mycompany.servlet.ExcluirUsuario</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListarDetalhes</servlet-name>
-        <servlet-class>com.mycompany.servlet.ListarDetalhes</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ListarDetalhesAluguel</servlet-name>
         <servlet-class>com.mycompany.servlet.ListarDetalhesAluguel</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarDemanda</servlet-name>
+        <servlet-class>com.mycompany.servlet.ListarDemanda</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>ListarCliente</servlet-name>
-        <url-pattern>/ListarCliente</url-pattern>
+        <servlet-name>ListarClientes</servlet-name>
+        <url-pattern>/ListarClientes</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListarCarro</servlet-name>
@@ -200,13 +200,14 @@
         <servlet-name>ExcluirUsuario</servlet-name>
         <url-pattern>/ExcluirUsuario</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ListarDetalhes</servlet-name>
-        <url-pattern>/ListarDetalhes</url-pattern>
-    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>ListarDetalhesAluguel</servlet-name>
         <url-pattern>/ListarDetalhesAluguel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarDemanda</servlet-name>
+        <url-pattern>/ListarDemanda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

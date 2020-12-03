@@ -34,6 +34,14 @@
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Consumidor
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="ListarConsumidor">Consultar e Editar</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Carro
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -82,8 +90,8 @@
                     Relatório
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="listaDetalhes.jsp">Aluguel</a>
-                    <a class="dropdown-item" href="#">Outra ação</a>
+                    <a class="dropdown-item" href="ListarDetalhesAluguel">Aluguel</a>
+                    <a class="dropdown-item" href="ListarDemanda">Produto Mais Alugado</a>
                   </div>
                 </li>
               </ul>

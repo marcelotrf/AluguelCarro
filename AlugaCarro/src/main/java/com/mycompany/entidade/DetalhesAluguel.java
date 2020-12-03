@@ -19,6 +19,9 @@ public class DetalhesAluguel {
     private String loja;
     private double precoDiaria;
     private double precoTotalDiaria;
+    private int idCarro;
+    private int idLoja;
+    private int idCliente;
 
     public DetalhesAluguel(int idAluguel, String nomeCliente, String marcaCarro, String modeloCarro, String placaCarro, int diasAluguel, String loja, double precoDiaria, double precoTotalDiaria) {
         this.idAluguel = idAluguel;
@@ -33,6 +36,24 @@ public class DetalhesAluguel {
     }
     
     
+    
+    
+
+    public DetalhesAluguel(int idAluguel, String nomeCliente, String marcaCarro, String modeloCarro, String placaCarro, int diasAluguel, String loja, double precoDiaria, double precoTotalDiaria, int idCarro, int idLoja, int idCliente) {
+        this.idAluguel = idAluguel;
+        this.nomeCliente = nomeCliente;
+        this.marcaCarro = marcaCarro;
+        this.modeloCarro = modeloCarro;
+        this.placaCarro = placaCarro;
+        this.diasAluguel = diasAluguel;
+        this.loja = loja;
+        this.precoDiaria = precoDiaria;
+        this.precoTotalDiaria = precoTotalDiaria;
+        this.idCarro = idCarro;
+        this.idLoja = idLoja;
+        this.idCliente = idCliente;
+    }
+
 
     public int getIdAluguel() {
         return idAluguel;
@@ -104,6 +125,30 @@ public class DetalhesAluguel {
 
     public void setPrecoTotalDiaria(double precoTotalDiaria) {
         this.precoTotalDiaria = precoTotalDiaria;
+    }
+
+    public int getIdCarro() {
+        return idCarro;
+    }
+
+    public void setIdCarro(int idCarro) {
+        this.idCarro = idCarro;
+    }
+
+    public int getIdLoja() {
+        return idLoja;
+    }
+
+    public void setIdLoja(int idLoja) {
+        this.idLoja = idLoja;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
     
     

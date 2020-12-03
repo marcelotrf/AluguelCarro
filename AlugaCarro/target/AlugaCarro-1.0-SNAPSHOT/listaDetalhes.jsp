@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Relatório de Alugueis</title>
+        
     </head>
    <body class="container">
         <h1>Relatório - Aluguel</h1>
@@ -27,7 +28,7 @@
                 <th>Preço Total Diária</th>
             </thead>  
             <tbody>
-                <c:forEach var="relatorio" items="${listaDetalhes}">
+                <c:forEach var="relatorio" items="${listaDetalhesAluguel}">
                     <tr>
                         <td>${relatorio.idAluguel}</td>
                         <td>${relatorio.nomeCliente}</td>
@@ -38,7 +39,21 @@
                         <td>${relatorio.loja}</td>
                         <td>${relatorio.precoDiaria}</td>
                         <td>${relatorio.precoTotalDiaria}</td>
+                    </tr>
                 </c:forEach>
+                    
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td> <c:out value="${total}"/> </td>
+                        
+                    </tr>
             </tbody>
         </table>
         <br/>

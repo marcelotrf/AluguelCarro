@@ -22,35 +22,38 @@ import java.util.logging.Logger;
  */
 public class DetalhesAluguelDAO {
     
-    
-     public static List<DetalhesAluguel> getDetalhesAlguel() {
+    public static List<DetalhesAluguel> getDetalhesAluguel() {
         List<DetalhesAluguel> listaDetalhes = new ArrayList();
         try {
             Connection con = ConexaoBD.getConexao();
             String query = "select aluguel.id, cliente.nome, carro.marca, carro.modelo, carro.placa, aluguel.qntDiaAluguel, loja.loja, carro.preco from (((aluguel inner join carro on aluguel.idCarro = carro.id) inner join loja on loja.id = carro.idLoja) inner join cliente on aluguel.idCliente = cliente.id) group by aluguel.id;";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
+            
+            while(rs.next()) {
                 int idAluguel = rs.getInt("id");
                 String nomeCliente = rs.getString("nome");
                 String marcaCarro = rs.getString("marca");
                 String modeloCarro = rs.getString("modelo");
                 String placaCarro = rs.getString("placa");
                 int diasAluguel = rs.getInt("qntDiaAluguel");
-                //int idLoja = rs.getInt("idLoja");
                 String loja = rs.getString("loja");
                 double precoDiaria = rs.getDouble("preco");
-                double precoTotalDiaria = diasAluguel*precoDiaria;
-                        
-                        
-                listaDetalhes.add(new DetalhesAluguel(idAluguel, nomeCliente, marcaCarro, modeloCarro, placaCarro, diasAluguel, loja, precoDiaria, precoTotalDiaria));
-
+                double precoTotalDiaria = precoDiaria * diasAluguel;
+                
+                listaDetalhes.add(
+                    new DetalhesAluguel(
+                        idAluguel, nomeCliente, marcaCarro, modeloCarro,
+                        placaCarro, diasAluguel, loja, precoDiaria, precoTotalDiaria
+                    )
+                );
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(CarroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DetalhesAluguelDAO.class.getName()).log(Level.SEVERE,null,ex);   
         }
-
+        
         return listaDetalhes;
     }
+    
+
 }
