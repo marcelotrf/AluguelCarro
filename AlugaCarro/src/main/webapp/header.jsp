@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F28729">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #273D59">
             <a class="navbar-brand" href="index.jsp">
             <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
             Pinpoint
@@ -30,14 +30,6 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="cadastrarCliente.jsp">Cadastrar</a>
                     <a class="dropdown-item" href="ListarClientes">Consultar e Editar</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Consumidor
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="ListarConsumidor">Consultar e Editar</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -95,10 +87,6 @@
                   </div>
                 </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-              </form>
             </div>
         </nav>
 
